@@ -429,6 +429,10 @@ $(function () {
 <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
 <div class="music-player">
     
+    <div class="title center-align">
+        <i class="fa fa-music"></i>&nbsp;&nbsp;我最喜欢的几个音乐，你也来听听？
+    </div>
+    
     <div class="row">
         <div class="col l8 offset-l2 m10 offset-m1 s12">
             <div id="aplayer" class="music"></div>
@@ -442,7 +446,7 @@ $(function () {
     new APlayer({
         container: document.getElementById('aplayer'),
         fixed: 'false' === 'true',
-        autoplay: 'false' === 'true',
+        autoplay: 'true' === 'true',
         theme: '#42b983',
         loop: 'all',
         order: 'list',
@@ -450,7 +454,7 @@ $(function () {
         volume: Number('0.7'),
         listFolded: 'false' === 'true',
         listMaxHeight: '',
-        audio: JSON.parse('[{"name":"Emma Watson","artist":"AJ Rafael","url":"http://www.ytmp3.cn/down/60691.mp3","cover":"http://p2.music.126.net/7XDMiDNRksF9paRGOEIZnQ==/846623953427731.jpg?param=90y90"},{"name":"River Flows In You","artist":"Martin Ermen","url":"http://www.ytmp3.cn/down/60691.mp3","cover":"http://p2.music.126.net/QnFSKGqltSSQ1PAO3z44dg==/5680077069158217.jpg?param=130y130"},{"name":"笑傲江湖曲(琴箫合奏)","artist":"胡伟立","url":"http://www.ytmp3.cn/down/59655.mp3","cover":"https://s2.ax1x.com/2019/04/30/EGlZHf.jpg"}]')
+        audio: JSON.parse('[{"name":"Emma Watson","artist":"AJ Rafael","url":"http://m7.music.126.net/20190430224541/5518f38cc89ca4da570ed6b7abf57c1c/ymusic/d5c7/88c3/a93e/d54c1059b0ff6f0c1ef7984264d65596.mp3","cover":"http://p2.music.126.net/7XDMiDNRksF9paRGOEIZnQ==/846623953427731.jpg?param=90y90"},{"name":"River Flows In You","artist":"Martin Ermen","url":"http://m8.music.126.net/20190430225101/bab87122ae1f7c3830127a5b95cab457/ymusic/0008/0258/555a/7b00f836855255459e36b057c4876be2.mp3","cover":"http://p2.music.126.net/QnFSKGqltSSQ1PAO3z44dg==/5680077069158217.jpg?param=130y130"},{"name":"笑傲江湖曲(琴箫合奏)","artist":"胡伟立","url":"http://m8.music.126.net/20190430225009/1c7577fc42b3346008f6943ae7c649c5/ymusic/bb7e/88b9/6369/07a9db971ee9250c63001369e4addeb1.mp3","cover":"https://s2.ax1x.com/2019/04/30/EGlZHf.jpg"}]')
     });
 });
 </script>
