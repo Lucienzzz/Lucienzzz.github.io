@@ -5,8 +5,7 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="左神的算法课第二节, Lucien写字的地方">
-    <meta name="description" content="1.快速排序1.1快速排序的实质​                一般经典快速排序是这样的：首先拿一个num(就是即将排序的元素)，我们把小于num的元素放在左边，大于num的元素放在左边，如此循环下去，每一个元素都这样做，就拍好了序。
-1">
+    <meta name="description" content="1. 快速排序1.1 快速排序的实质​                一般经典快速排序是这样的：首先拿一个num(就是即将排序的元素)，我们把小于num的元素放在左边，大于num的元素放在左边，如此循环下去，每一个元素都这样做，就拍好了序。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -414,7 +413,7 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>Word Count:&nbsp;&nbsp;
-                        1.6k
+                        1.7k
                     </div>
                     
 
@@ -437,9 +436,9 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="1-快速排序"><a href="#1-快速排序" class="headerlink" title="1.快速排序"></a>1.快速排序</h4><h5 id="1-1快速排序的实质"><a href="#1-1快速排序的实质" class="headerlink" title="1.1快速排序的实质"></a>1.1快速排序的实质</h5><p>​                一般经典快速排序是这样的：首先拿一个num(就是即将排序的元素)，我们把小于num的元素放在左边，大于num的元素放在左边，如此循环下去，每一个元素都这样做，就拍好了序。</p>
-<h5 id="1-2快排的优化"><a href="#1-2快排的优化" class="headerlink" title="1.2快排的优化"></a>1.2快排的优化</h5><p>​                快排的优化主要是对于=num的部分进行优化，我们都知道一个数字可能在排序中出现的次数不止一次，可能有多次，这时候我们可以在原来快排的基础上加上一个==num的部分，这样就减少了次数，虽说时间复杂度不变都是O（N<em>logN），当然这是期望值。还有一点优化就是每一次拿到的num是随机抽取的，而不是第一个，第二个那样。比如说我们给一个有序的序列排序1 2 3 4 5 6 7，那么第一次拿1,小于1的部分不存在，剩下的都是大于1的，2也同理。这样次数就是n+n-1+n-2+….+1，复杂度就变成了o（N^2）,对于这样的问题，只要我们随机拿到初值num，对其求数学期望就会发现是O（N\</em>logN）。</p>
-<h5 id="1-3代码如下"><a href="#1-3代码如下" class="headerlink" title="1.3代码如下"></a>1.3代码如下</h5><pre class=" language-java"><code class="language-java">    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">quicksort</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> L<span class="token punctuation">,</span> <span class="token keyword">int</span> R<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <h4 id="1-快速排序"><a href="#1-快速排序" class="headerlink" title="1. 快速排序"></a>1. 快速排序</h4><h5 id="1-1-快速排序的实质"><a href="#1-1-快速排序的实质" class="headerlink" title="1.1 快速排序的实质"></a>1.1 快速排序的实质</h5><p>​                一般经典快速排序是这样的：首先拿一个num(就是即将排序的元素)，我们把小于num的元素放在左边，大于num的元素放在左边，如此循环下去，每一个元素都这样做，就拍好了序。</p>
+<h5 id="1-2-快排的优化"><a href="#1-2-快排的优化" class="headerlink" title="1.2 快排的优化"></a>1.2 快排的优化</h5><p>​                快排的优化主要是对于=num的部分进行优化，我们都知道一个数字可能在排序中出现的次数不止一次，可能有多次，这时候我们可以在原来快排的基础上加上一个==num的部分，这样就减少了次数，虽说时间复杂度不变都是O（N<em>logN），当然这是期望值。还有一点优化就是每一次拿到的num是随机抽取的，而不是第一个，第二个那样。比如说我们给一个有序的序列排序1 2 3 4 5 6 7，那么第一次拿1,小于1的部分不存在，剩下的都是大于1的，2也同理。这样次数就是n+n-1+n-2+….+1，复杂度就变成了o（N^2）,对于这样的问题，只要我们随机拿到初值num，对其求数学期望就会发现是O（N\</em>logN）。</p>
+<h5 id="1-3-代码如下"><a href="#1-3-代码如下" class="headerlink" title="1.3 代码如下"></a>1.3 代码如下</h5><pre class=" language-java"><code class="language-java">    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">quicksort</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> L<span class="token punctuation">,</span> <span class="token keyword">int</span> R<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">if</span><span class="token punctuation">(</span>L <span class="token operator">>=</span> R<span class="token punctuation">)</span>
             <span class="token keyword">return</span><span class="token punctuation">;</span>
         <span class="token function">swap</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> L <span class="token operator">+</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>R <span class="token operator">-</span> L <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span>R<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//随机从R到L上拿一个元素当做积极要排序数的标准，避免万一是顺序的时候，复杂度变成o（N）</span>
@@ -470,9 +469,9 @@
         a<span class="token punctuation">[</span>q<span class="token punctuation">]</span> <span class="token operator">=</span> temp<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 </code></pre>
-<h4 id="2-堆排序"><a href="#2-堆排序" class="headerlink" title="2.堆排序"></a>2.堆排序</h4><h5 id="2-1堆排序的原理"><a href="#2-1堆排序的原理" class="headerlink" title="2.1堆排序的原理"></a>2.1堆排序的原理</h5><p>​                堆排序就是先根据数据状况建立完全二叉树，当然这个是虚拟的，就像链表的结构一样，在物理内存中是不连续的，以指针的方式连接，在逻辑上是连续的，我们可以画出来。实际上二叉树是虚拟的，而是用数组来表示的。</p>
-<h5 id="2-2堆排序的实现步骤"><a href="#2-2堆排序的实现步骤" class="headerlink" title="2.2堆排序的实现步骤"></a>2.2堆排序的实现步骤</h5><p>​                堆排序的一般步骤，建立最大堆（指的是父节点大于任何一个孩子节点），把最后一个元素放到堆顶，然后元素个数-1，然后重新建立最大堆，以此类推即可</p>
-<h5 id="2-3具体实现"><a href="#2-3具体实现" class="headerlink" title="2.3具体实现"></a>2.3具体实现</h5><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> 堆排序 <span class="token punctuation">{</span>
+<h4 id="2-堆排序"><a href="#2-堆排序" class="headerlink" title="2. 堆排序"></a>2. 堆排序</h4><h5 id="2-1-堆排序的原理"><a href="#2-1-堆排序的原理" class="headerlink" title="2.1 堆排序的原理"></a>2.1 堆排序的原理</h5><p>​                堆排序就是先根据数据状况建立完全二叉树，当然这个是虚拟的，就像链表的结构一样，在物理内存中是不连续的，以指针的方式连接，在逻辑上是连续的，我们可以画出来。实际上二叉树是虚拟的，而是用数组来表示的。</p>
+<h5 id="2-2-堆排序的实现步骤"><a href="#2-2-堆排序的实现步骤" class="headerlink" title="2.2 堆排序的实现步骤"></a>2.2 堆排序的实现步骤</h5><p>​                堆排序的一般步骤，建立最大堆（指的是父节点大于任何一个孩子节点），把最后一个元素放到堆顶，然后元素个数-1，然后重新建立最大堆，以此类推即可</p>
+<h5 id="2-3-具体实现"><a href="#2-3-具体实现" class="headerlink" title="2.3 具体实现"></a>2.3 具体实现</h5><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> 堆排序 <span class="token punctuation">{</span>
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">int</span> a<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">87</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">20</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
         <span class="token function">heapSort</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -527,7 +526,7 @@
 <span class="token punctuation">}</span>
 
 </code></pre>
-<h4 id="3-流求任意个数的中位数"><a href="#3-流求任意个数的中位数" class="headerlink" title="3.流求任意个数的中位数"></a>3.流求任意个数的中位数</h4><p>​        题目是这样描述的，在一个流中随机吐出数字，我要求任意一次的中位数，该怎么办。一般的思路就是，把每一次吐出的数字放在一个容器中，然后排好序，奇数个数字的话就是÷2+1，偶数的话就是中间两个数之和除2，这种办法也是容易想到的办法。但是效果不太理想。第一，我们要消耗容器不说，第二我们要排序，这个代价至少是O（N*logN）。所以说，有一个更好的办法，是用大小堆来做。首先：我们建立的一大堆和一小堆，我们的目的是把N/2个较大数放在右面，N/2个较小的数放在面。此时中位数就很好求了。具体做法如下：第一个进来之后先放入最大堆，然后再来的数，小于他的放在最大堆，大于他的放在最小堆，用二叉树的方式坠链（也就是虚拟的，实际还是数组），每一次检测大小堆个数的差值，如果大于等于2的话，我们就把最大堆的最大元素放入最小堆，让次大元素成为最大堆的最大元素。例如 5 4 6 7，第一次进入5 ，放入最大堆，中位数就是5（当然一个数中位数就是自己，没什么好说的）。第二次进入4，放入最大堆，这时候发现，大小堆个数差值是2，则把最大堆的最大元素放在最小堆中，让次大元素4成为最大堆的最大元素，这时候差值是0，中位数就是（4+5）/2，接下来，是6，大于4，则放入最小堆，7也是如此。但是这时，差值是2了。最大堆元素 4。最小堆元素 5 6 7，这时候同样的，把最小堆的最小元素5放在最大堆中成为最大元素，这时候最大堆 4 5 ，最小堆 6 7，中位数就是堆首元素 （5+6）/2即可。这样用到了堆的知识。听说这几年京东，阿里面试中就有很多堆的问题。</p>
+<h4 id="3-流求任意个数的中位数"><a href="#3-流求任意个数的中位数" class="headerlink" title="3. 流求任意个数的中位数"></a>3. 流求任意个数的中位数</h4><p>​        题目是这样描述的，在一个流中随机吐出数字，我要求任意一次的中位数，该怎么办。一般的思路就是，把每一次吐出的数字放在一个容器中，然后排好序，奇数个数字的话就是÷2+1，偶数的话就是中间两个数之和除2，这种办法也是容易想到的办法。但是效果不太理想。第一，我们要消耗容器不说，第二我们要排序，这个代价至少是O（N*logN）。所以说，有一个更好的办法，是用大小堆来做。首先：我们建立的一大堆和一小堆，我们的目的是把N/2个较大数放在右面，N/2个较小的数放在面。此时中位数就很好求了。具体做法如下：第一个进来之后先放入最大堆，然后再来的数，小于他的放在最大堆，大于他的放在最小堆，用二叉树的方式坠链（也就是虚拟的，实际还是数组），每一次检测大小堆个数的差值，如果大于等于2的话，我们就把最大堆的最大元素放入最小堆，让次大元素成为最大堆的最大元素。例如 5 4 6 7，第一次进入5 ，放入最大堆，中位数就是5（当然一个数中位数就是自己，没什么好说的）。第二次进入4，放入最大堆，这时候发现，大小堆个数差值是2，则把最大堆的最大元素放在最小堆中，让次大元素4成为最大堆的最大元素，这时候差值是0，中位数就是（4+5）/2，接下来，是6，大于4，则放入最小堆，7也是如此。但是这时，差值是2了。最大堆元素 4。最小堆元素 5 6 7，这时候同样的，把最小堆的最小元素5放在最大堆中成为最大元素，这时候最大堆 4 5 ，最小堆 6 7，中位数就是堆首元素 （5+6）/2即可。这样用到了堆的知识。听说这几年京东，阿里面试中就有很多堆的问题。</p>
 <p>Lucien</p>
 <p>于2019年5月2日20:01:08   眼睛好难受</p>
 
@@ -759,8 +758,7 @@
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary block-with-text">1.快速排序1.1快速排序的实质​                一般经典快速排序是这样的：首先拿一个num(就是即将排序的元素)，我们把小于num的元素放在左边，大于num的元素放在左边，如此循环下去，每一个元素都这样做，就拍好了序。
-1</div>
+                    <div class="summary block-with-text">1. 快速排序1.1 快速排序的实质​                一般经典快速排序是这样的：首先拿一个num(就是即将排序的元素)，我们把小于num的元素放在左边，大于num的元素放在左边，如此循环下去，每一个元素都这样做，就拍好了序。</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-02
