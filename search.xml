@@ -20,12 +20,6 @@
       
         <tags>
             
-            <tag> 插入排序 </tag>
-            
-            <tag> 时间复杂度 </tag>
-            
-            <tag> 对数器 </tag>
-            
             <tag> 稳定性 </tag>
             
             <tag> 工业界的综合排序 </tag>
@@ -35,6 +29,12 @@
             <tag> 比较器 </tag>
             
             <tag> 桶排序 </tag>
+            
+            <tag> 插入排序 </tag>
+            
+            <tag> 时间复杂度 </tag>
+            
+            <tag> 对数器 </tag>
             
         </tags>
       
@@ -88,6 +88,12 @@
       
         <tags>
             
+            <tag> 插入排序 </tag>
+            
+            <tag> 时间复杂度 </tag>
+            
+            <tag> 对数器 </tag>
+            
             <tag> 算法 </tag>
             
             <tag> 归并排序 </tag>
@@ -97,12 +103,6 @@
             <tag> 冒泡排序 </tag>
             
             <tag> 选择排序 </tag>
-            
-            <tag> 插入排序 </tag>
-            
-            <tag> 时间复杂度 </tag>
-            
-            <tag> 对数器 </tag>
             
         </tags>
       
