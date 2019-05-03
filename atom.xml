@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://Lucienzzz.github.io/"/>
-  <updated>2019-05-02T12:32:24.589Z</updated>
+  <updated>2019-05-02T12:59:50.868Z</updated>
   <id>https://Lucienzzz.github.io/</id>
   
   <author>
@@ -15,6 +15,61 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://Lucienzzz.github.io/2019/05/02/du-gu-jiu-jian-zong-qi/"/>
+    <id>https://Lucienzzz.github.io/2019/05/02/du-gu-jiu-jian-zong-qi/</id>
+    <published>2019-05-02T12:59:50.868Z</published>
+    <updated>2019-05-02T12:59:50.868Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>独孤九剑「破剑式」</title>
+    <link href="https://Lucienzzz.github.io/2019/05/02/du-gu-jiu-jian-po-jian-shi/"/>
+    <id>https://Lucienzzz.github.io/2019/05/02/du-gu-jiu-jian-po-jian-shi/</id>
+    <published>2019-05-02T12:42:35.000Z</published>
+    <updated>2019-05-03T10:14:40.602Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4 id=&quot;1-稳定性&quot;&gt;&lt;a href=&quot;#1-稳定性&quot; class=&quot;headerlink&quot; title=&quot;1. 稳定性&quot;&gt;&lt;/a&gt;1. 稳定性&lt;/h4&gt;&lt;p&gt;​    稳定性就是排序前后，相同元素所在的相对位置不变。&lt;/p&gt;
+&lt;p&gt;​    冒泡 插入 归并 
+        
+      
+    
+    </summary>
+    
+      <category term="独孤九剑" scheme="https://Lucienzzz.github.io/categories/%E7%8B%AC%E5%AD%A4%E4%B9%9D%E5%89%91/"/>
+    
+    
+      <category term="插入排序" scheme="https://Lucienzzz.github.io/tags/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/"/>
+    
+      <category term="时间复杂度" scheme="https://Lucienzzz.github.io/tags/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/"/>
+    
+      <category term="对数器" scheme="https://Lucienzzz.github.io/tags/%E5%AF%B9%E6%95%B0%E5%99%A8/"/>
+    
+      <category term="稳定性" scheme="https://Lucienzzz.github.io/tags/%E7%A8%B3%E5%AE%9A%E6%80%A7/"/>
+    
+      <category term="工业界的综合排序" scheme="https://Lucienzzz.github.io/tags/%E5%B7%A5%E4%B8%9A%E7%95%8C%E7%9A%84%E7%BB%BC%E5%90%88%E6%8E%92%E5%BA%8F/"/>
+    
+      <category term="排序问题的补充" scheme="https://Lucienzzz.github.io/tags/%E6%8E%92%E5%BA%8F%E9%97%AE%E9%A2%98%E7%9A%84%E8%A1%A5%E5%85%85/"/>
+    
+      <category term="比较器" scheme="https://Lucienzzz.github.io/tags/%E6%AF%94%E8%BE%83%E5%99%A8/"/>
+    
+      <category term="桶排序" scheme="https://Lucienzzz.github.io/tags/%E6%A1%B6%E6%8E%92%E5%BA%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>独孤九剑「总决式」</title>

@@ -59,7 +59,7 @@
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/tags" class="waves-effect waves-light">
+        <a href="/标签" class="waves-effect waves-light">
             
             <i class="fa fa-tags"></i>
             
@@ -68,7 +68,7 @@
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/categories" class="waves-effect waves-light">
+        <a href="/分类" class="waves-effect waves-light">
             
             <i class="fa fa-bookmark"></i>
             
@@ -77,7 +77,7 @@
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/archives" class="waves-effect waves-light">
+        <a href="/历程" class="waves-effect waves-light">
             
             <i class="fa fa-archive"></i>
             
@@ -86,7 +86,7 @@
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/about" class="waves-effect waves-light">
+        <a href="/关于我" class="waves-effect waves-light">
             
             <i class="fa fa-user-circle-o"></i>
             
@@ -95,7 +95,7 @@
     </li>
     
     <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
+        <a href="/友链" class="waves-effect waves-light">
             
             <i class="fa fa-address-book"></i>
             
@@ -138,7 +138,7 @@
         </li>
         
         <li>
-            <a href="/tags" class="waves-effect waves-light">
+            <a href="/标签" class="waves-effect waves-light">
                 
                 <i class="fa fa-fw fa-tags"></i>
                 
@@ -147,7 +147,7 @@
         </li>
         
         <li>
-            <a href="/categories" class="waves-effect waves-light">
+            <a href="/分类" class="waves-effect waves-light">
                 
                 <i class="fa fa-fw fa-bookmark"></i>
                 
@@ -156,7 +156,7 @@
         </li>
         
         <li>
-            <a href="/archives" class="waves-effect waves-light">
+            <a href="/历程" class="waves-effect waves-light">
                 
                 <i class="fa fa-fw fa-archive"></i>
                 
@@ -165,7 +165,7 @@
         </li>
         
         <li>
-            <a href="/about" class="waves-effect waves-light">
+            <a href="/关于我" class="waves-effect waves-light">
                 
                 <i class="fa fa-fw fa-user-circle-o"></i>
                 
@@ -174,7 +174,7 @@
         </li>
         
         <li>
-            <a href="/friends" class="waves-effect waves-light">
+            <a href="/友链" class="waves-effect waves-light">
                 
                 <i class="fa fa-fw fa-address-book"></i>
                 
@@ -683,6 +683,28 @@
     </div>
 
     
+        <link rel="stylesheet" href="/libs/gitalk/gitalk.css">
+<link rel="stylesheet" href="/css/my-gitalk.css">
+
+<div class="card gitalk-card" data-aos="fade-up">
+    <div id="gitalk-container" class="card-content"></div>
+</div>
+
+<script src="/libs/gitalk/gitalk.min.js"></script>
+<script>
+    let gitalk = new Gitalk({
+        clientID: 'fa670dcc6c7d9c983ac3',
+        clientSecret: '2f13234762010bf21ab4c9de0b57669135f0a612',
+        repo: 'Lucienzzz.github.io',
+        owner: 'Lucienzzz',
+        admin: "Lucienzzz",
+        id: '2019-05-02T16-49-30',
+        distractionFreeMode: false  // Facebook-like distraction free mode
+    });
+
+    gitalk.render('gitalk-container');
+</script>
+    
 
     
 
@@ -746,23 +768,25 @@
         
         <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;Current
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2019/05/02/du-gu-jiu-jian-zong-qi-shi/">
+                <a href="/2019/05/02/du-gu-jiu-jian-po-jian-shi/">
                     <div class="card-image">
                         
-                        <img src="https://s2.ax1x.com/2019/05/02/EttmHH.png" class="responsive-img" alt="独孤九剑「总决式」">
+                        <img src="https://s2.ax1x.com/2019/05/01/EJnWEF.gif" class="responsive-img" alt="独孤九剑「破剑式」">
                         
-                        <span class="card-title">独孤九剑「总决式」</span>
+                        <span class="card-title">独孤九剑「破剑式」</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary block-with-text">1. 快速排序1.1 快速排序的实质​                一般经典快速排序是这样的：首先拿一个num(就是即将排序的元素)，我们把小于num的元素放在左边，大于num的元素放在左边，如此循环下去，每一个元素都这样做，就拍好了序。</div>
+                    <div class="summary block-with-text">1. 稳定性​    稳定性就是排序前后，相同元素所在的相对位置不变。
+​    冒泡 插入 归并  ——–&gt;稳定
+​    选择 快排 堆排  ——–&gt;不稳定
+2. 工业界的综合排序（简单说明）​    基本数据类型：快排 （</div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-02
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-02
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -775,20 +799,39 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/快速排序/" target="_blank">
-                        <span class="chip bg-color">快速排序</span>
+                    <a href="/tags/插入排序/" target="_blank">
+                        <span class="chip bg-color">插入排序</span>
                     </a>
                     
-                    <a href="/tags/堆排序/" target="_blank">
-                        <span class="chip bg-color">堆排序</span>
+                    <a href="/tags/时间复杂度/" target="_blank">
+                        <span class="chip bg-color">时间复杂度</span>
                     </a>
                     
-                    <a href="/tags/流求任意个数的中位数/" target="_blank">
-                        <span class="chip bg-color">流求任意个数的中位数</span>
+                    <a href="/tags/对数器/" target="_blank">
+                        <span class="chip bg-color">对数器</span>
+                    </a>
+                    
+                    <a href="/tags/稳定性/" target="_blank">
+                        <span class="chip bg-color">稳定性</span>
+                    </a>
+                    
+                    <a href="/tags/工业界的综合排序/" target="_blank">
+                        <span class="chip bg-color">工业界的综合排序</span>
+                    </a>
+                    
+                    <a href="/tags/排序问题的补充/" target="_blank">
+                        <span class="chip bg-color">排序问题的补充</span>
+                    </a>
+                    
+                    <a href="/tags/比较器/" target="_blank">
+                        <span class="chip bg-color">比较器</span>
+                    </a>
+                    
+                    <a href="/tags/桶排序/" target="_blank">
+                        <span class="chip bg-color">桶排序</span>
                     </a>
                     
                 </div>
@@ -1016,7 +1059,7 @@
         <div class="col s12 m8 l8 copy-right">
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">3k</span>
+                <span class="white-color">3.5k</span>
             
 
             
