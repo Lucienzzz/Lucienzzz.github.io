@@ -260,7 +260,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://s2.ax1x.com/2019/05/01/EJnWEF.gif')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://s2.ax1x.com/2019/05/05/E0tciF.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -397,16 +397,8 @@
                                 <span class="chip bg-color">桶排序</span>
                             </a>
                         
-                            <a href="/tags/插入排序/" target="_blank">
-                                <span class="chip bg-color">插入排序</span>
-                            </a>
-                        
-                            <a href="/tags/时间复杂度/" target="_blank">
-                                <span class="chip bg-color">时间复杂度</span>
-                            </a>
-                        
-                            <a href="/tags/对数器/" target="_blank">
-                                <span class="chip bg-color">对数器</span>
+                            <a href="/tags/桶排序的应用-MaxGap/" target="_blank">
+                                <span class="chip bg-color">桶排序的应用----MaxGap</span>
                             </a>
                         
                     </div>
@@ -436,14 +428,14 @@
                     
                     <div class="info-break-policy">
                         <i class="fa fa-file-word-o fa-fw"></i>Word Count:&nbsp;&nbsp;
-                        571
+                        1.8k
                     </div>
                     
 
                     
                     <div class="info-break-policy">
                         <i class="fa fa-clock-o fa-fw"></i>Read Times:&nbsp;&nbsp;
-                        2 Min
+                        8 Min
                     </div>
                     
                 
@@ -505,7 +497,170 @@
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h4 id="5-桶排序"><a href="#5-桶排序" class="headerlink" title="5. 桶排序"></a>5. 桶排序</h4><p>​    不基于比较的排序，比如说我有一组数据，他的范围是0~60，那么我们可以用长度为60的数组，然后按照每个数据出现的个数给对应的位置自增。比如说 数据是7770011，7个数，创造一个长度为7的数组，然后7自增三次，因为7有三个，0位置自增两次，1自增2次，然后按照次序复原即可。这个桶是个大概念，只是一个容器而已，具体可以是链表，堆……cc</p>
+<h4 id="5-桶排序"><a href="#5-桶排序" class="headerlink" title="5. 桶排序"></a>5. 桶排序</h4><p>​    不基于比较的排序，比如说我有一组数据，他的范围是0~60，那么我们可以用长度为60的数组，然后按照每个数据出现的个数给对应的位置自增。比如说 数据是7770011，7个数，创造一个长度为7的数组，然后7自增三次，因为7有三个，0位置自增两次，1自增2次，然后按照次序复原即可。这个桶是个大概念，只是一个容器而已，具体可以是链表，堆……</p>
+<h4 id="6-桶排序的应用—-MaxGap"><a href="#6-桶排序的应用—-MaxGap" class="headerlink" title="6. 桶排序的应用—-MaxGap"></a>6. 桶排序的应用—-MaxGap</h4><p>例题和分析详细看代码</p>
+<h5 id="有bug版本"><a href="#有bug版本" class="headerlink" title="有bug版本"></a>有bug版本</h5><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">bug</span>版本最大间隙MaxGap <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/**
+     * 补充问题
+     * 给定一个数组， 求如果排序之后， 相邻两数的最大差值， 要求时
+     * 间复杂度O(N)， 且要求不能用非基于比较的排序。(就是桶排序基数排序计数排序之类的)
+     *
+     * @param
+     */</span>
+    <span class="token comment" spellcheck="true">//1. 把问题转化为N个数，放在N+1个桶里，保证最后一个和第一个里面都有数字，那么中间绝对有空桶，</span>
+    <span class="token comment" spellcheck="true">//举个例子，现在有这么几个数 1 8 4 6 12，分成范围为0-2 3-5 6-8 9-11 12-14这N+1个桶</span>
+    <span class="token comment" spellcheck="true">//  0-2 3-5 6-8 9-11 12-14</span>
+    <span class="token comment" spellcheck="true">//   1   4  6 8         12</span>
+    <span class="token comment" spellcheck="true">//然后这个最大的差值只可能在不同的桶中产生，而不是在于一个桶中产生，为什么呢？想象一个极端的例子，</span>
+    <span class="token comment" spellcheck="true">//一个桶的容量是9，可以有10-19的桶，20-39的桶、</span>
+    <span class="token comment" spellcheck="true">// 一个桶内部 最大值 9 最小值 0</span>
+    <span class="token comment" spellcheck="true">// 两个桶    最大值 19 最小值 1</span>
+    <span class="token comment" spellcheck="true">// 还有一点是老师举的例子：想象一个空桶两侧有非空桶，两个非空桶构成相邻序列，第一个非空桶的最大值与第二个非空桶的最小值</span>
+    <span class="token comment" spellcheck="true">// 的差值肯定大于一个桶内部的最大差值。这点可以举个例子试试。这也就是我们构造空桶的好处。那么是不是所有的最大间隙都是在空桶两侧</span>
+    <span class="token comment" spellcheck="true">// 产生呢？我们想象这样一个例子10-19中有19,20-29没有数，30-39中有30，40-49中有49那么差值最大的在后两个桶中产生，所以不一定</span>
+    <span class="token comment" spellcheck="true">// 吗？错误！是一定的，这点左神说的可能有点问题，你要是分组的话，就会发现肯定在空桶左右最大！这点进过大量实验哈哈哈，比如</span>
+    <span class="token comment" spellcheck="true">// 他所举的例子 19 30 49 可能在于 10-19 20-29 30-39 40-49 50-59这个分组上不是这样的，但实际上是这样分组的吗？显然不是的</span>
+    <span class="token comment" spellcheck="true">// 分4组，每一组是（49-19）/4 = 7 所以分组为 19-26 27-34 35-42 43-50,所以肯定在空桶周围产生，不信我明天用代码实现看看</span>
+    <span class="token comment" spellcheck="true">// 睡觉了 困死了 2019年5月3日23:40:31</span>
+    <span class="token comment" spellcheck="true">// 2019年5月4日23:24:38我错了，写了代码测试了下，我的想法是错的。不是空桶周围的两个桶能得到MaxGap，有可能还是相邻的两个不为空的桶</span>
+    <span class="token comment" spellcheck="true">// 之间的，例如 19 35 52 73</span>
+    <span class="token comment" spellcheck="true">//        19-29 30-40 41-51 52-62 63-73</span>
+    <span class="token comment" spellcheck="true">//          19    35    52          69</span>
+    <span class="token comment" spellcheck="true">//</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> a<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">35</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">49</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> max<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>a<span class="token punctuation">.</span>length <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> min<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>a<span class="token punctuation">.</span>length <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> maxNum <span class="token operator">=</span> Integer<span class="token punctuation">.</span>MIN_VALUE<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> minNum <span class="token operator">=</span> Integer<span class="token punctuation">.</span>MAX_VALUE<span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> a<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            maxNum <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>maxNum<span class="token punctuation">,</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            minNum <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>minNum<span class="token punctuation">,</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">boolean</span> isEmpty<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">boolean</span><span class="token punctuation">[</span>a<span class="token punctuation">.</span>length <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> isEmpty<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            isEmpty<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> a<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> pos <span class="token operator">=</span> <span class="token function">getPos</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> maxNum<span class="token punctuation">,</span> minNum<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//隶属于哪个桶</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>isEmpty<span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                max<span class="token punctuation">[</span>pos<span class="token punctuation">]</span> <span class="token operator">=</span> min<span class="token punctuation">[</span>pos<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                isEmpty<span class="token punctuation">[</span>pos<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                max<span class="token punctuation">[</span>pos<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> max<span class="token punctuation">[</span>pos<span class="token punctuation">]</span> <span class="token operator">?</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">:</span> max<span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                min<span class="token punctuation">[</span>pos<span class="token punctuation">]</span> <span class="token operator">=</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> min<span class="token punctuation">[</span>pos<span class="token punctuation">]</span> <span class="token operator">?</span> a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">:</span> min<span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">int</span> g_Max <span class="token operator">=</span> Integer<span class="token punctuation">.</span>MIN_VALUE<span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> a<span class="token punctuation">.</span>length <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> count <span class="token operator">=</span> i<span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>isEmpty<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>isEmpty<span class="token punctuation">[</span>count<span class="token punctuation">]</span><span class="token punctuation">)</span>
+                    count<span class="token operator">--</span><span class="token punctuation">;</span>
+                g_Max <span class="token operator">=</span> max<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> min<span class="token punctuation">[</span>count <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">></span> g_Max <span class="token operator">?</span> max<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> min<span class="token punctuation">[</span>count <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">:</span> g_Max<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>g_Max<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h5 id="无bug版本"><a href="#无bug版本" class="headerlink" title="无bug版本"></a>无bug版本</h5><pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Arrays<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> 最大间隙MaxGap <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">maxGap</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>length <span class="token operator">&lt;</span> <span class="token number">2</span> <span class="token operator">||</span> a <span class="token operator">==</span> null<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">int</span> max <span class="token operator">=</span> Integer<span class="token punctuation">.</span>MIN_VALUE<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> min <span class="token operator">=</span> Integer<span class="token punctuation">.</span>MAX_VALUE<span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> a<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            max <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>max<span class="token punctuation">,</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            min <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>min<span class="token punctuation">,</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>min <span class="token operator">==</span> max<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">int</span> maxs<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>a<span class="token punctuation">.</span>length<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> mins<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>a<span class="token punctuation">.</span>length<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">boolean</span> hasNum<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">boolean</span><span class="token punctuation">[</span>a<span class="token punctuation">.</span>length<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> a<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> pos <span class="token operator">=</span> <span class="token function">getGap</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>max<span class="token punctuation">,</span>min<span class="token punctuation">,</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            maxs<span class="token punctuation">[</span>pos<span class="token punctuation">]</span> <span class="token operator">=</span> hasNum<span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token operator">?</span>Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>maxs<span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token punctuation">,</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">:</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            mins<span class="token punctuation">[</span>pos<span class="token punctuation">]</span> <span class="token operator">=</span> hasNum<span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token operator">?</span>Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>mins<span class="token punctuation">[</span>pos<span class="token punctuation">]</span><span class="token punctuation">,</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">:</span>a<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            hasNum<span class="token punctuation">[</span>pos<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment" spellcheck="true">//求Maxgap</span>
+        <span class="token keyword">int</span> g_Max <span class="token operator">=</span> maxs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> temp <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> a<span class="token punctuation">.</span>length<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>hasNum<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                temp <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>temp<span class="token punctuation">,</span>mins<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">-</span>g_Max<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                g_Max <span class="token operator">=</span> maxs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> temp<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">getGap</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> max<span class="token punctuation">,</span> <span class="token keyword">int</span> min<span class="token punctuation">,</span> <span class="token keyword">int</span> num<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>num <span class="token operator">-</span> min<span class="token punctuation">)</span><span class="token operator">*</span>a<span class="token punctuation">.</span>length<span class="token operator">/</span><span class="token punctuation">(</span>max <span class="token operator">-</span> min<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+
+    <span class="token comment" spellcheck="true">// for test</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">comparator</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>nums <span class="token operator">==</span> null <span class="token operator">||</span> nums<span class="token punctuation">.</span>length <span class="token operator">&lt;</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        Arrays<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> gap <span class="token operator">=</span> Integer<span class="token punctuation">.</span>MIN_VALUE<span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            gap <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> nums<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> gap<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> gap<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// for test</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">generateRandomArray</span><span class="token punctuation">(</span><span class="token keyword">int</span> maxSize<span class="token punctuation">,</span> <span class="token keyword">int</span> maxValue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>maxSize <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>maxValue <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>maxValue <span class="token operator">*</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> arr<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// for test</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">copyArray</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>arr <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>arr<span class="token punctuation">.</span>length<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            res<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// for test</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> testTime <span class="token operator">=</span> <span class="token number">500000</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> maxSize <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> maxValue <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+        <span class="token keyword">boolean</span> succeed <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> testTime<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr1 <span class="token operator">=</span> <span class="token function">generateRandomArray</span><span class="token punctuation">(</span>maxSize<span class="token punctuation">,</span> maxValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr2 <span class="token operator">=</span> <span class="token function">copyArray</span><span class="token punctuation">(</span>arr1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">maxGap</span><span class="token punctuation">(</span>arr1<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token function">comparator</span><span class="token punctuation">(</span>arr2<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                succeed <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>succeed <span class="token operator">?</span> <span class="token string">"Nice!"</span> <span class="token operator">:</span> <span class="token string">"Fucking fucked!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre>
+<p>于2019年5月5日17:16:32 </p>
+<p>Lucien</p>
 
             </div>
             <hr>
@@ -729,7 +884,7 @@
                 <a href="/2019/05/02/du-gu-jiu-jian-po-jian-shi/">
                     <div class="card-image">
                         
-                        <img src="https://s2.ax1x.com/2019/05/01/EJnWEF.gif" class="responsive-img" alt="独孤九剑「破剑式」">
+                        <img src="https://s2.ax1x.com/2019/05/05/E0tciF.jpg" class="responsive-img" alt="独孤九剑「破剑式」">
                         
                         <span class="card-title">独孤九剑「破剑式」</span>
                     </div>
@@ -779,16 +934,8 @@
                         <span class="chip bg-color">桶排序</span>
                     </a>
                     
-                    <a href="/tags/插入排序/" target="_blank">
-                        <span class="chip bg-color">插入排序</span>
-                    </a>
-                    
-                    <a href="/tags/时间复杂度/" target="_blank">
-                        <span class="chip bg-color">时间复杂度</span>
-                    </a>
-                    
-                    <a href="/tags/对数器/" target="_blank">
-                        <span class="chip bg-color">对数器</span>
+                    <a href="/tags/桶排序的应用-MaxGap/" target="_blank">
+                        <span class="chip bg-color">桶排序的应用----MaxGap</span>
                     </a>
                     
                 </div>
@@ -994,7 +1141,7 @@
         <div class="col s12 m8 l8 copy-right">
             
                 &nbsp;<i class="fa fa-area-chart"></i>&nbsp;站点总字数:&nbsp;
-                <span class="white-color">3.5k</span>
+                <span class="white-color">4.8k</span>
             
 
             
